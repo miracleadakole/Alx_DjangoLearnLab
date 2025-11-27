@@ -8,6 +8,8 @@ from django.contrib.auth.views import LogoutView
 from django.shortcuts import redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import get_object_or_404
 
 # Helper functions to check roles
 def is_admin(user):
@@ -62,3 +64,16 @@ def register(request):
 
     return render(request, "relationship_app/register.html", {"form": form})
 
+@permission_required('relationship_app.can_add_book')
+def add_book(request):
+    return render(request, 'relationship_app/add_book.html')
+
+@permission_required('relationship_app.can_change_book')
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'relationship_app/edit_book.html', {'book': book})
+
+@permission_required('relationship_app.can_delete_book')
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'relationship_app/delete_book.html', {'book': book})
