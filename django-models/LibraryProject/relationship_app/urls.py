@@ -6,9 +6,6 @@ from .views import list_books
 from .views import LibraryDetailView
 from .views import CustomLoginView
 from .views import CustomLogoutView
-from .views import add_book
-from .views import edit_book
-from .views import delete_book
 
 urlpatterns = [
     path('books/', list_books, name='list_books'),
@@ -20,7 +17,7 @@ urlpatterns = [
     path("register/", views.register, name="register"),
 ]
 urlpatterns += [
-    path('books/add/', add_book, name='add_book'),
-    path('books/<int:book_id>/edit/', edit_book, name='edit_book'),
-    path('books/<int:book_id>/delete/', delete_book, name='delete_book'),
+    path('add_book/', views.add_book, name='add_book'),
+    path('edit_book/', views.edit_book, name='edit_book'),
+    path('delete_book/',. views.delete_book, name='delete_book'),
 ]
