@@ -42,3 +42,8 @@ def delete_book(request, book_id):
 @permission_required('bookshelf.change_book', raise_exception=True)
 def edit_book(request, pk):
     ...
+
+def search_books(request):
+    query = request.GET.get('q', '')
+    books = Book.objects.filter(title__icontains=query)
+    return render(request, "bookshelf/book_list.html", {"books": books, "query": query})

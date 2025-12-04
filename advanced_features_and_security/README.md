@@ -34,3 +34,24 @@ Examples of permission checks were added to the `views.py` file.
 ## How to Run
 ```bash
 python manage.py runserver
+
+# Django Security Implementation
+
+## Objectives
+Enhance app security against XSS, CSRF, SQLi attacks using Django best practices.
+
+## What Was Done
+✔ Updated SECURE settings in settings.py  
+✔ Added CSRF tokens in all forms  
+✔ Rewrote views to prevent SQL Injection  
+✔ Implemented CSP middleware  
+✔ Added documentation and code comments  
+
+## Testing Performed
+- CSRF protection tested by removing token --> form failed (expected)
+- Search and form inputs tested for sanitization
+- Browser response headers verified in dev tools
+
+## How to Run
+python manage.py runserver
+
