@@ -41,6 +41,23 @@ SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
+# Redirect all HTTP requests to HTTPS automatically
+SECURE_SSL_REDIRECT = True   # Ensures every HTTP request is upgraded to HTTPS
+
+# Enable HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # Tells browser to only use HTTPS for 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Applies HSTS to all subdomains
+SECURE_HSTS_PRELOAD = True  # Allows domain to be submitted to HSTS preload list
+
+
+# Additional Security Headers
+X_FRAME_OPTIONS = "DENY"   # Prevents clickjacking by disallowing iframe usage
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents MIME-type sniffing attacks
+SECURE_BROWSER_XSS_FILTER = True    # Enables XSS protection in browsers such as Chrome & IE
+
+# Optional but recommended:
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
 # Application definition
 
 
