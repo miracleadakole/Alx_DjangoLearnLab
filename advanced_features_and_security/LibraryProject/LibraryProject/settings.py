@@ -49,6 +49,8 @@ SECURE_HSTS_SECONDS = 31536000  # Tells browser to only use HTTPS for 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Applies HSTS to all subdomains
 SECURE_HSTS_PRELOAD = True  # Allows domain to be submitted to HSTS preload list
 
+# If your app is behind a proxy like Nginx, Gunicorn, or Heroku
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Additional Security Headers
 X_FRAME_OPTIONS = "DENY"   # Prevents clickjacking by disallowing iframe usage
